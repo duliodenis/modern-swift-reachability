@@ -8,14 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var networkMonitor = NetworkMonitor.shared
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if networkMonitor.isConnected {
+                Text("Connected to the network")
+                    .foregroundColor(.green)
+            } else {
+                Text("No network connection")
+                    .foregroundColor(.red)
+            }
+            
+            Text("Connection Type: \(connectionTypeString)")
+                .padding()
         }
-        .padding()
+        .onAppear {
+            networkMonitor.startMonitoring()
+        }
+    }
+    
+    private var connectionTypeString: String {
+        switch networkMonitor.connectionType {
+        case .wifi:
+            return "WiFi"
+        case .cellular:
+            return "Cellular"
+        case .ethernet:
+            return "Ethernet"
+        case .unknown:
+            return "Unknown"
+        }
     }
 }
 

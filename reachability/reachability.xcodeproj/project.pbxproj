@@ -11,6 +11,7 @@
 		6C3E8A062C2396910089BCE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3E8A052C2396910089BCE3 /* ContentView.swift */; };
 		6C3E8A082C2396930089BCE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C3E8A072C2396930089BCE3 /* Assets.xcassets */; };
 		6C3E8A0B2C2396930089BCE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C3E8A0A2C2396930089BCE3 /* Preview Assets.xcassets */; };
+		6C3E8A122C23991C0089BCE3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3E8A112C23991C0089BCE3 /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		6C3E8A052C2396910089BCE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C3E8A072C2396930089BCE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C3E8A0A2C2396930089BCE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6C3E8A112C23991C0089BCE3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				6C3E8A032C2396910089BCE3 /* reachabilityApp.swift */,
+				6C3E8A112C23991C0089BCE3 /* NetworkMonitor.swift */,
 				6C3E8A052C2396910089BCE3 /* ContentView.swift */,
 				6C3E8A072C2396930089BCE3 /* Assets.xcassets */,
 				6C3E8A092C2396930089BCE3 /* Preview Content */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C3E8A062C2396910089BCE3 /* ContentView.swift in Sources */,
+				6C3E8A122C23991C0089BCE3 /* NetworkMonitor.swift in Sources */,
 				6C3E8A042C2396910089BCE3 /* reachabilityApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
