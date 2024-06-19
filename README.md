@@ -10,6 +10,8 @@ A Swift utility class that allows a SwiftUI app to monitor and react to network 
 -	The @StateObject property wrapper is used for the NetworkMonitor singleton.
 -	The .task modifier is used to call startMonitoring asynchronously when the view appears.
 
+![](./art/screenshot-00.png)
+
 ## Sample Project
 The [reachability example app](./reachability/) uses the utility class.
 
