@@ -6,47 +6,34 @@
 //
 
 import Foundation
-import Network
 
 @MainActor
 class NetworkMonitor: ObservableObject {
     static let shared = NetworkMonitor()
     
-    private var monitor: NWPathMonitor
-    
     @Published var isConnected: Bool = false
-    @Published var connectionType: ConnectionType = .unknown
     
-    enum ConnectionType {
-        case wifi
-        case cellular
-        case ethernet
-        case unknown
-    }
+    private init() { }
     
-    private init() {
-        monitor = NWPathMonitor()
-    }
-    
-    func startMonitoring() {
-        monitor.pathUpdateHandler = { path in
-            Task { @MainActor in
-                self.isConnected = path.status == .satisfied
-                self.determineConnectionType(path)
-            }
+    func startMonitoring() async {
+        do {
+            self.isConnected = try await checkConnectivity()
+        } catch {
+            self.isConnected = false
         }
-        monitor.start(queue: .global(qos: .background))
     }
     
-    private func determineConnectionType(_ path: NWPath) {
-        if path.usesInterfaceType(.wifi) {
-            connectionType = .wifi
-        } else if path.usesInterfaceType(.cellular) {
-            connectionType = .cellular
-        } else if path.usesInterfaceType(.wiredEthernet) {
-            connectionType = .ethernet
+    private func checkConnectivity() async throws -> Bool {
+        let config = URLSessionConfiguration.default
+        config.waitsForConnectivity = true
+        let session = URLSession(configuration: config)
+        let url = URL(string: "https://www.apple.com")!
+        let (_, response) = try await session.data(from: url)
+        
+        if let httpResponse = response as? HTTPURLResponse {
+            return httpResponse.statusCode == 200
         } else {
-            connectionType = .unknown
+            return false
         }
     }
 }
