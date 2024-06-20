@@ -19,26 +19,16 @@ struct ContentView: View {
                 Text("No network connection")
                     .foregroundColor(.red)
             }
-            
-            Text("Connection Type: \(connectionTypeString)")
-                .padding()
         }
-        .onAppear {
-            networkMonitor.startMonitoring()
+        .task {
+            await networkMonitor.startMonitoring()
         }
     }
-    
-    private var connectionTypeString: String {
-        switch networkMonitor.connectionType {
-        case .wifi:
-            return "WiFi"
-        case .cellular:
-            return "Cellular"
-        case .ethernet:
-            return "Ethernet"
-        case .unknown:
-            return "Unknown"
-        }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }
 
